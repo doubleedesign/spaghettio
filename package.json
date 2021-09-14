@@ -1,0 +1,14 @@
+{
+  "name": "webdemo02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "Leesa Ward",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^6.0.1"
+  },
+  "scripts": {
+    "sass": "node-sass sass/style.scss -o css/"
+  }
+}

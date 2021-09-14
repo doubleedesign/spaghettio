@@ -1,0 +1,46 @@
+.restaurant-details {
+
+	&-image {
+		width: 100%;
+		height: 420px;
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			// object-fit and object-position allows us to use the fixed height and width of the container to crop where we want to
+			object-fit: cover; // stops the height/width from squashing/stretching
+			object-position: center center;
+		}
+	}
+
+	&-copy,
+	&-address {
+		box-sizing: border-box;
+		width: 100%;
+		flex-basis: 100%;
+	}
+
+	&-copy {
+
+		// A perk of SASS - you can nest your media queries inside the element they apply to!
+		@media screen and (min-width:768px) {
+			width: 75%;
+			flex-basis: 75%;
+		}
+
+		h1 {
+			font-size: 3rem;
+		}
+	}
+
+	&-address {
+		background: #EEE;
+		padding: 1rem;
+
+		@media screen and (min-width:768px) {
+			width: 25%;
+			flex-basis: 25%;
+		}
+	}
+}

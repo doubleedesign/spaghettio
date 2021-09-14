@@ -1,0 +1,43 @@
+.banner {
+	background-image: url('../images/tacyra-autrey-jYQd0TbO__0-unsplash.jpg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	position: relative;
+	height: 200px;
+
+	&:before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.65) 100%);
+	}
+
+	.banner-inner {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+
+		.container {
+			height: 100%;
+			display: flex;
+			justify-content: flex-start;
+			align-items: flex-end;
+			padding: 2rem 0;
+
+			h1 {
+				color: white;
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+.home-cards {
+	background: var(--light-color);
+}

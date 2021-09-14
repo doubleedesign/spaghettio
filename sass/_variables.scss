@@ -1,0 +1,13 @@
+// CSS variables (you don't even need SASS for this!)
+// More info: https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+:root {
+	--primary-color: rgb(205, 42, 61);
+	--secondary-color: rgb(0, 144, 105);
+	--light-color: rgba(241, 241, 241);
+	--dark-color: rgb(23, 23, 23);
+	--body-font: 'Poppins', sans-serif;
+	--heading-font: 'Besley', serif;
+}
+
+// SASS variables - will only work if compile as SASS
+$global-transition: all 0.3s ease;

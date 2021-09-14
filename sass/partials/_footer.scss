@@ -1,0 +1,23 @@
+footer {
+	background: var(--secondary-color);
+	color: white;
+	padding: 1rem;
+}
+
+footer nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+footer nav .menu {
+}
+
+footer nav .menu li {
+	font-size: 0.75rem;
+}
+
+footer nav .menu li a:hover,
+footer nav .menu li a:focus {
+	text-decoration: underline;
+}
