@@ -23,10 +23,18 @@
 			text-align: left;
 		}
 
-		span {
+		a {
+			display: block;
 			font-family: var(--heading-font);
 			font-weight: 400;
 			font-size: 1.25rem;
+			text-decoration: none;
+			color: white;
+			transition: $global-transition;
+
+			&:hover, &:focus {
+				text-shadow: 0 0 0.5rem white;
+			}
 		}
 	}
 

@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="logo">
-				<span>Spaghettio</span>
+				<a href="index.php">Spaghettio</a>
 			</div>
 			<nav>
 				<form class="search-form">
