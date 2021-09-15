@@ -1,4 +1,4 @@
-<a class="card" href="detail.php?id=<?php echo $id; ?>">
+<a class="card" href="<?php echo $url; ?>">
 	<div class="card-inner">
 		<div class="card-top">
 			<img src="<?php echo $imagePath; ?>" alt=""/>

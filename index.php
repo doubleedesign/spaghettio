@@ -30,6 +30,7 @@ $restaurants = $db->getAll('SELECT * from restaurant_details');
 				<?php
 				foreach($restaurants as $restaurant) {
 					$id = $restaurant['ID'];
+					$url = "detail.php?id=$id";
 					$name = $restaurant['name'];
 					$description = $restaurant['description'];
 					$imagePath = $restaurant['imagePath'];
