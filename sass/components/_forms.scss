@@ -1,0 +1,93 @@
+.page-form {
+	max-width: 600px;
+	margin: 2rem auto;
+	box-sizing: border-box;
+
+	fieldset {
+		border: 1px solid var(--secondary-color);
+		padding: 1rem;
+		margin-bottom: 2rem;
+
+		legend {
+			font-family: var(--heading-font);
+			font-size: 1.25rem;
+			background: var(--secondary-color);
+			color: white;
+			padding: 0.5rem;
+			line-height: 1;
+			margin-bottom: -1rem;
+		}
+
+		.form-row {
+			position: relative;
+			margin-top: -0.75rem;
+
+			label {
+				display: inline-block;
+				padding: 0.25rem;
+				position: relative;
+				top: 1.8rem;
+				left: 0.5rem;
+				font-size: 0.9rem;
+				color: var(--dark-color);
+				opacity: 0.5;
+				transition: 0.3s all ease;
+				z-index: 0;
+			}
+
+			input, textarea {
+				font-family: var(--body-font);
+				width: 100%;
+				box-sizing: border-box;
+				min-height: 2rem;
+				font-size: 0.9rem;
+				padding: 1.5rem 0.5rem 0.5rem 0.75rem;
+				background: transparent;
+				border-radius: 0;
+				border: 1px solid #CCC;
+				position: relative;
+				z-index: 1;
+
+				&:focus {
+					border-color: var(--primary-color);
+					outline: none;
+					box-shadow: 0 0 0.25rem var(--primary-color);
+				}
+			}
+
+			&:focus-within {
+
+				label {
+					background: white;
+					opacity: 1;
+					top: 0.9rem;
+					color: var(--primary-color);
+					z-index: 5;
+				}
+			}
+		}
+	}
+
+	.button-wrap {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+
+		input[type=submit] {
+			width: auto;
+			background: var(--dark-color);
+			border: 0;
+			font-family: var(--heading-font);
+			font-size: 1.25rem;
+			color: white;
+			transition: 0.3s background-color ease;
+			padding: 0.5rem 1rem;
+			cursor: pointer;
+
+			&:hover,
+			&:focus {
+				background: var(--secondary-color);
+			}
+		}
+	}
+}

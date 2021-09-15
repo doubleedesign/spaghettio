@@ -35,7 +35,9 @@ $restaurants = $db->getAll('SELECT * from restaurant_details');
 					$description = $restaurant['description'];
 					$imagePath = $restaurant['imagePath'];
 
-					include('partials/card.php');
+					if(!empty($name)) {
+						include( 'partials/card.php' );
+					}
 				} ?>
 			</div>
 		</div>

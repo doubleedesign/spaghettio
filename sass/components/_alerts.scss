@@ -1,0 +1,38 @@
+.alert {
+	padding: 1rem;
+	margin: 2rem 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	a {
+		background: white;
+		padding: 0.5rem 1rem;
+		text-decoration: underline;
+		text-decoration-color: transparent;
+		font-weight: bold;
+		transition: $global-transition;
+
+		&:hover, &:focus {
+			text-decoration-color: currentColor;
+		}
+	}
+
+	&-success {
+		background: var(--secondary-color);
+		color: white;
+
+		a {
+			color: var(--secondary-color);
+		}
+	}
+
+	&-error {
+		background: var(--primary-color);
+		color: white;
+
+		a {
+			color: var(--primary-color);
+		}
+	}
+}

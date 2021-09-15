@@ -55,6 +55,101 @@ strong {
   text-decoration: none;
   transition: background 0.3s ease; }
 
+.page-form {
+  max-width: 600px;
+  margin: 2rem auto;
+  box-sizing: border-box; }
+  .page-form fieldset {
+    border: 1px solid var(--secondary-color);
+    padding: 1rem;
+    margin-bottom: 2rem; }
+    .page-form fieldset legend {
+      font-family: var(--heading-font);
+      font-size: 1.25rem;
+      background: var(--secondary-color);
+      color: white;
+      padding: 0.5rem;
+      line-height: 1;
+      margin-bottom: -1rem; }
+    .page-form fieldset .form-row {
+      position: relative;
+      margin-top: -0.75rem; }
+      .page-form fieldset .form-row label {
+        display: inline-block;
+        padding: 0.25rem;
+        position: relative;
+        top: 1.8rem;
+        left: 0.5rem;
+        font-size: 0.9rem;
+        color: var(--dark-color);
+        opacity: 0.5;
+        transition: 0.3s all ease;
+        z-index: 0; }
+      .page-form fieldset .form-row input, .page-form fieldset .form-row textarea {
+        font-family: var(--body-font);
+        width: 100%;
+        box-sizing: border-box;
+        min-height: 2rem;
+        font-size: 0.9rem;
+        padding: 1.5rem 0.5rem 0.5rem 0.75rem;
+        background: transparent;
+        border-radius: 0;
+        border: 1px solid #CCC;
+        position: relative;
+        z-index: 1; }
+        .page-form fieldset .form-row input:focus, .page-form fieldset .form-row textarea:focus {
+          border-color: var(--primary-color);
+          outline: none;
+          box-shadow: 0 0 0.25rem var(--primary-color); }
+      .page-form fieldset .form-row:focus-within label {
+        background: white;
+        opacity: 1;
+        top: 0.9rem;
+        color: var(--primary-color);
+        z-index: 5; }
+  .page-form .button-wrap {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end; }
+    .page-form .button-wrap input[type=submit] {
+      width: auto;
+      background: var(--dark-color);
+      border: 0;
+      font-family: var(--heading-font);
+      font-size: 1.25rem;
+      color: white;
+      transition: 0.3s background-color ease;
+      padding: 0.5rem 1rem;
+      cursor: pointer; }
+      .page-form .button-wrap input[type=submit]:hover, .page-form .button-wrap input[type=submit]:focus {
+        background: var(--secondary-color); }
+
+.alert {
+  padding: 1rem;
+  margin: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .alert a {
+    background: white;
+    padding: 0.5rem 1rem;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    font-weight: bold;
+    transition: all 0.3s ease; }
+    .alert a:hover, .alert a:focus {
+      text-decoration-color: currentColor; }
+  .alert-success {
+    background: var(--secondary-color);
+    color: white; }
+    .alert-success a {
+      color: var(--secondary-color); }
+  .alert-error {
+    background: var(--primary-color);
+    color: white; }
+    .alert-error a {
+      color: var(--primary-color); }
+
 .site-header {
   background: var(--primary-color);
   color: white;
@@ -199,6 +294,7 @@ strong {
         position: absolute;
         bottom: 1rem;
         left: 1rem;
+        font-size: 1.5rem;
         color: white;
         z-index: 10; }
       .card .card-inner .card-top img {
@@ -261,6 +357,9 @@ strong {
       .banner .banner-inner .container h1 {
         color: white;
         font-size: 2rem; }
+        @media screen and (min-width: 1024px) {
+          .banner .banner-inner .container h1 {
+            font-size: 2.5rem; } }
 
 .home-cards {
   background: var(--light-color); }

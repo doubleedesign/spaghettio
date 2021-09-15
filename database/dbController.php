@@ -34,7 +34,7 @@ class dbController {
 	 *
 	 * @return bool - Did we successfully insert the record into the database?
 	 */
-	public function insert($query, $name, $imageUrl): bool {
+	public function insert($query, $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL): bool {
 
 		if($this->conn->error) {
 			$this->logError($this->conn->error);
@@ -48,7 +48,7 @@ class dbController {
 			return false;
 		}
 
-		$statement->bind_param("ssssss", $name, $imageUrl);
+		$statement->bind_param("ssssss", $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL);
 		$statement->execute();
 
 		$this->logError($statement->affected_rows);
