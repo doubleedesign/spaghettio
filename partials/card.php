@@ -1,3 +1,9 @@
+<?php
+if(!isset($url)) {
+	$url = "";
+}
+?>
+
 <a class="card" href="<?php echo $url; ?>">
 	<div class="card-inner">
 		<div class="card-top">
