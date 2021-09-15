@@ -1,38 +1,40 @@
-header {
+.site-header {
 	background: var(--primary-color);
 	color: white;
 	box-shadow: 0 0 0.5rem var(--dark-color);
 	position: relative;
 	z-index: 10;
-}
 
-header .row {
-	justify-content: space-between;
-	align-items: center;
-}
+	.row {
+		justify-content: space-between;
+		align-items: center;
+	}
 
-header .logo span {
-	font-family: var(--heading-font);
-	font-weight: 400;
-	font-size: 1.25rem;
-}
+	.logo span {
+		font-family: var(--heading-font);
+		font-weight: 400;
+		font-size: 1.25rem;
+	}
 
-header nav {
-	display: flex;
-	align-items: center;
-}
+	nav {
+		display: flex;
+		align-items: center;
 
-header nav ul {
-	padding-left: 3rem;
-}
+		ul {
+			padding-left: 3rem;
 
-header nav .menu li a {
-	display: block;
-	padding: 1rem 0.5rem;
-}
+			li {
 
-header nav .menu li a:hover,
-header nav .menu li a:focus {
-	background: rgba(255,255,255,0.2);
-}
+				a {
+					display: block;
+					padding: 1rem 0.5rem;
 
+					&:hover,
+					&:focus {
+						background: rgba(255,255,255,0.2);
+					}
+				}
+			}
+		}
+	}
+}

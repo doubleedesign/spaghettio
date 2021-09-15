@@ -42,53 +42,47 @@ strong {
   text-decoration: none;
   transition: background 0.3s ease; }
 
-header {
+.site-header {
   background: var(--primary-color);
   color: white;
   box-shadow: 0 0 0.5rem var(--dark-color);
   position: relative;
   z-index: 10; }
+  .site-header .row {
+    justify-content: space-between;
+    align-items: center; }
+  .site-header .logo span {
+    font-family: var(--heading-font);
+    font-weight: 400;
+    font-size: 1.25rem; }
+  .site-header nav {
+    display: flex;
+    align-items: center; }
+    .site-header nav ul {
+      padding-left: 3rem; }
+      .site-header nav ul li a {
+        display: block;
+        padding: 1rem 0.5rem; }
+        .site-header nav ul li a:hover, .site-header nav ul li a:focus {
+          background: rgba(255, 255, 255, 0.2); }
 
-header .row {
-  justify-content: space-between;
-  align-items: center; }
-
-header .logo span {
-  font-family: var(--heading-font);
-  font-weight: 400;
-  font-size: 1.25rem; }
-
-header nav {
-  display: flex;
-  align-items: center; }
-
-header nav ul {
-  padding-left: 3rem; }
-
-header nav .menu li a {
-  display: block;
-  padding: 1rem 0.5rem; }
-
-header nav .menu li a:hover,
-header nav .menu li a:focus {
-  background: rgba(255, 255, 255, 0.2); }
-
-footer {
+.site-footer {
   background: var(--secondary-color);
   color: white;
   padding: 1rem; }
-
-footer nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center; }
-
-footer nav .menu li {
-  font-size: 0.75rem; }
-
-footer nav .menu li a:hover,
-footer nav .menu li a:focus {
-  text-decoration: underline; }
+  .site-footer nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    .site-footer nav ul li {
+      font-size: 0.75rem; }
+      .site-footer nav ul li a {
+        padding-left: 0;
+        text-decoration: underline;
+        text-decoration-color: transparent;
+        transition: all 0.3s ease; }
+        .site-footer nav ul li a:hover, .site-footer nav ul li a:focus {
+          text-decoration-color: currentColor; }
 
 .card {
   padding: 1rem 1rem;
