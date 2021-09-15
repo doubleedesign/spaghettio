@@ -1,11 +1,17 @@
 <a class="card" href="<?php echo $url; ?>">
 	<div class="card-inner">
 		<div class="card-top">
-			<img src="<?php echo $imagePath; ?>" alt=""/>
-			<h2><?php echo $name; ?></h2>
+			<?php if(isset($imagePath)) { ?>
+				<img src="<?php echo $imagePath; ?>" alt=""/>
+			<?php } ?>
+			<?php if(isset($name)) { ?>
+				<h2><?php echo $name; ?></h2>
+			<?php } ?>
 		</div>
-		<div class="card-text">
-			<p><?php echo $description; ?></p>
-		</div>
+		<?php if(isset($description)) { ?>
+			<div class="card-text">
+				<p><?php echo $description; ?></p>
+			</div>
+		<?php } ?>
 	</div>
 </a>
