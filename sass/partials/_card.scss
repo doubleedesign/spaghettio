@@ -15,6 +15,7 @@
 		.card-top {
 			position: relative;
 			overflow: hidden;
+			height: 200px;
 
 			&:before {
 				content: '';
@@ -39,8 +40,12 @@
 				display: block;
 				width: 100%;
 				transition: transform 0.3s ease;
-				// object-fit and object-position allows us to use the fixed height and width of the container to crop where we want to
-				// Super useful for images that are different ratios but we want them to appear consistent!
+				/**
+				 * height: 100% with object-fit and object-position allow us to use
+				 * the fixed height and width of the container to crop where we want to.
+				 * Super useful for images that are different ratios but we want them to appear consistent!
+				 */
+				height: 100%;
 				object-fit: cover;
 				object-position: center center;
 			}
