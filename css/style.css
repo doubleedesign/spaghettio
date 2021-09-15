@@ -364,33 +364,56 @@ strong {
 .home-cards {
   background: var(--light-color); }
 
-.restaurant-details-image {
-  width: 100%;
-  height: 420px;
-  overflow: hidden; }
-  .restaurant-details-image img {
+.restaurant-details {
+  margin: 2rem 0; }
+  .restaurant-details .row {
+    justify-content: space-between; }
+  .restaurant-details-banner {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center center; }
-
-.restaurant-details-copy, .restaurant-details-address {
-  box-sizing: border-box;
-  width: 100%;
-  flex-basis: 100%; }
-
-@media screen and (min-width: 768px) {
-  .restaurant-details-copy {
-    width: 75%;
-    flex-basis: 75%; } }
-
-.restaurant-details-copy h1 {
-  font-size: 3rem; }
-
-.restaurant-details-address {
-  background: #EEE;
-  padding: 1rem; }
+    height: 420px;
+    overflow: hidden;
+    position: relative; }
+    .restaurant-details-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center; }
+    .restaurant-details-banner h1 {
+      font-size: 3rem;
+      background: var(--dark-color);
+      padding: 1rem;
+      color: white;
+      position: absolute;
+      left: 0;
+      bottom: 1rem; }
+  .restaurant-details-copy, .restaurant-details-address {
+    box-sizing: border-box;
+    width: 100%;
+    flex-basis: 100%;
+    margin-top: 2rem; }
   @media screen and (min-width: 768px) {
-    .restaurant-details-address {
-      width: 25%;
-      flex-basis: 25%; } }
+    .restaurant-details-copy {
+      width: 70%;
+      flex-basis: 70%; } }
+  @media screen and (min-width: 1280px) {
+    .restaurant-details-copy {
+      width: 65%;
+      flex-basis: 65%; } }
+  .restaurant-details-address {
+    background: #EEE;
+    padding: 1rem;
+    min-height: 90px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden; }
+    @media screen and (min-width: 768px) {
+      .restaurant-details-address {
+        width: 30%;
+        flex-basis: 30%; } }
+    .restaurant-details-address i {
+      opacity: 0.1;
+      font-size: 5rem;
+      position: absolute;
+      top: -0.5rem;
+      right: -0.5rem; }

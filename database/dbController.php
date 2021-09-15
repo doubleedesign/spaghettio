@@ -30,7 +30,11 @@ class dbController {
 	 * Method to run a provided query to save data to the current database
 	 * @param $query
 	 * @param $name
-	 * @param $imageUrl
+	 * @param $address
+	 * @param $description
+	 * @param $imagePath
+	 * @param $imageCreator
+	 * @param $imageSourceURL
 	 *
 	 * @return int|bool - Did we successfully insert the record into the database? If so, return the ID.
 	 */
@@ -70,6 +74,8 @@ class dbController {
 	/**
 	 * Method to get all restaurants from the database
 	 * @param $query
+	 *
+	 * @return mixed
 	 */
 	public function getAll($query) {
 		$raw_results = $this->conn->query($query);
@@ -79,15 +85,26 @@ class dbController {
 			array_push($formatted_results, $row);
 		}
 
-		return $raw_results;
+		return $formatted_results;
 	}
 
 	/**
-	 * Method to get a single restaurant from the database
-	 * @param $query
+	 * Method to get a single restaurant from the database by its ID
+	 * @param $id
+	 *
+	 * @return array
 	 */
-	public function getSingle($query) {
+	public function getRestaurantById($id): array {
+		$raw_results = $this->conn->query("SELECT * FROM restaurant_details WHERE ID='$id'");
+		$formatted_results = [];
 
+		while($row = $raw_results->fetch_assoc()) {
+			array_push($formatted_results, $row);
+		}
+
+		// Because we're searching by ID, we expect an array of only one item
+		// So let's return just the first (only) one
+		return $formatted_results[0];
 	}
 
 	/**

@@ -1,8 +1,10 @@
 <?php
-// TODO: Grab these values from database
-$name = 'La Porchetta';
-$description = 'Italian on a budget, family restaurant';
-$address = ''
+require_once('database/config.php');
+require_once('database/dbController.php');
+$db = new dbController();
+$db->dbConnect(HOST, USER, PASS, DB);
+$id = $_GET['id'];
+$restaurant = $db->getRestaurantById($id);
 ?>
 
 <!DOCTYPE html>
@@ -17,16 +19,17 @@ $address = ''
 
 	<main class="restaurant-details">
 		<div class="container">
-			<div class="restaurant-details-image">
-				<img src="images/tacyra-autrey-jYQd0TbO__0-unsplash.jpg" alt="Placeholder image"/>
+			<div class="restaurant-details-banner">
+				<img src="<?php echo $restaurant['imagePath']; ?>" alt=""/>
+				<h1><?php echo $restaurant['name']; ?></h1>
 			</div>
 			<div class="row">
 				<div class="restaurant-details-copy">
-					<h1><?php echo $name; ?></h1>
-					<p><?php echo $description; ?></p>
+					<p><?php echo $restaurant['description']; ?></p>
 				</div>
 				<div class="restaurant-details-address">
-					<p>Shop RE1, Pacific Werribee, Cnr Derrimut Rd Heaths Rd Werribee 3030</p>
+					<i class="fas fa-map-marker-alt"></i>
+					<p><?php echo $restaurant['address']; ?></p>
 				</div>
 			</div>
 		</div>
