@@ -32,9 +32,9 @@ class dbController {
 	 * @param $name
 	 * @param $imageUrl
 	 *
-	 * @return bool - Did we successfully insert the record into the database?
+	 * @return int|bool - Did we successfully insert the record into the database? If so, return the ID.
 	 */
-	public function insert($query, $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL): bool {
+	public function insert($query, $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL) {
 
 		if($this->conn->error) {
 			$this->logError($this->conn->error);
@@ -51,10 +51,16 @@ class dbController {
 		$statement->bind_param("ssssss", $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL);
 		$statement->execute();
 
-		$this->logError($statement->affected_rows);
-
 		if($statement->affected_rows) {
-			return true;
+			// TODO: Use this code as the basis for the search method and then use the search method here
+			$raw_results = $this->conn->query("SELECT ID FROM restaurant_details WHERE name='$name'");
+			$formatted_results = [];
+
+			while($row = $raw_results->fetch_assoc()) {
+				array_push($formatted_results, $row);
+			}
+
+			return $formatted_results[0];
 		}
 		else {
 			return false;
