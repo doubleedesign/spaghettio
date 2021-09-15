@@ -1,3 +1,11 @@
+<?php
+require_once('database/config.php');
+require_once('database/dbController.php');
+$db = new dbController();
+$db->dbConnect(HOST, USER, PASS, DB);
+$restaurants = $db->getAll('SELECT * from restaurant_details');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,40 +28,14 @@
 		<div class="container">
 			<div class="row cards-row">
 				<?php
-					$name = "La Porchetta";
-					$description = 'Italian on a budget, family restaurant';
-					include('partials/card.php');
-				?>
+				foreach($restaurants as $restaurant) {
+					$id = $restaurant['ID'];
+					$name = $restaurant['name'];
+					$description = $restaurant['description'];
+					$imagePath = $restaurant['imagePath'];
 
-				<?php
-					$name = "Tartufo";
-					$description = 'Sunny Brisbane!';
 					include('partials/card.php');
-				?>
-
-				<?php
-					$name = "Pellegrini's";
-					$description = 'Classic Melbourne, Bourke St';
-					include('partials/card.php');
-				?>
-
-				<?php
-					$name = "Papa Gino's";
-					$description = 'Lygon St goodness';
-					include('partials/card.php');
-				?>
-
-				<?php
-					$name = "Il Gambero";
-					$description = 'Bruschetta pizza!';
-					include('partials/card.php');
-				?>
-
-				<?php
-					$name = "Cafe Trevi";
-					$description = 'More Lygon St...if only it was within my 5km';
-					include('partials/card.php');
-				?>
+				} ?>
 			</div>
 		</div>
 	</main>

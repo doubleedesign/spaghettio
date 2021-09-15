@@ -62,6 +62,37 @@ class dbController {
 	}
 
 	/**
+	 * Method to get all restaurants from the database
+	 * @param $query
+	 */
+	public function getAll($query) {
+		$raw_results = $this->conn->query($query);
+		$formatted_results = [];
+
+		while($row = $raw_results->fetch_assoc()) {
+			array_push($formatted_results, $row);
+		}
+
+		return $raw_results;
+	}
+
+	/**
+	 * Method to get a single restaurant from the database
+	 * @param $query
+	 */
+	public function getSingle($query) {
+
+	}
+
+	/**
+	 * Method to get search results from the database
+	 * @param $query
+	 */
+	public function search($query) {
+
+	}
+
+	/**
 	 * Method to write errors to a log file
 	 * @param $error
 	 */
