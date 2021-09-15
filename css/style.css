@@ -43,7 +43,8 @@ strong {
   flex-wrap: wrap; }
   .row.cards-row {
     margin-left: -1rem;
-    margin-right: -1rem; }
+    margin-right: -1rem;
+    padding: 1rem 0; }
 
 .menu {
   display: flex; }
@@ -212,7 +213,8 @@ strong {
       display: flex;
       justify-content: flex-start;
       align-items: flex-end;
-      padding: 2rem 0; }
+      padding-top: 2rem;
+      padding-bottom: 2rem; }
       .banner .banner-inner .container h1 {
         color: white;
         font-size: 2rem; }
