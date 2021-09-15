@@ -30,6 +30,7 @@
 					<?php
 					foreach($credits as $credit) {
 						$url = $credit['imageSourceURL'];
+						$linkTarget = '_blank';
 						$imagePath = $credit['imagePath'];
 						$description = $credit['imageCreator'];
 
