@@ -1,19 +1,42 @@
+<?php
+	require_once('database/config.php');
+	require_once('database/dbController.php');
+	$db = new dbController();
+	$db->dbConnect(HOST, USER, PASS, DB);
+	$credits = $db->getAll('SELECT imagePath, imageCreator, imageSourceURL from restaurant_details');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Spaghettio Image Credits</title>
-	<link rel="stylesheet" href="css/reset.css"/>
-	<link rel="stylesheet" href="css/style.css"/>
+	<?php include('partials/head.php'); ?>
 </head>
 <body>
 
 	<?php include('partials/header.php'); ?>
 
 	<main>
-		<div class="container">
-			<h1>Image Credits</h1>
-		</div>
+		<section class="page-heading">
+			<div class="container">
+				<h1>Image Credits</h1>
+			</div>
+		</section>
+		<section class="page-content">
+			<div class="container">
+				<div class="row cards-row">
+					<?php
+					foreach($credits as $credit) {
+						$url = $credit['imageSourceURL'];
+						$imagePath = $credit['imagePath'];
+						$description = $credit['imageCreator'];
+
+						include('partials/card.php');
+					} ?>
+				</div>
+			</div>
+		</section>
 	</main>
 
 	<?php include('partials/footer.php'); ?>
