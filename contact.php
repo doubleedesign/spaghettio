@@ -8,11 +8,10 @@
 
 	<?php include('partials/header.php'); ?>
 
-	<main>
-		<div class="container">
-			<h1>Contact Us</h1>
-		</div>
-	</main>
+	<?php
+	$heading = 'Contact Us';
+	include('partials/page-heading.php');
+	?>
 
 	<?php include('partials/footer.php'); ?>
 

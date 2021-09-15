@@ -18,6 +18,7 @@ strong {
 	margin-left: auto;
 	margin-right: auto;
 	box-sizing: border-box;
+	padding: 0 1rem;
 }
 
 .row {
@@ -42,8 +43,4 @@ strong {
 	color: white;
 	text-decoration: none;
 	transition: background 0.3s ease;
-}
-
-main {
-	padding: 1rem;
 }

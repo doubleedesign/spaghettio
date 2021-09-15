@@ -18,11 +18,12 @@
 	<?php include('partials/header.php'); ?>
 
 	<main>
-		<section class="page-heading">
-			<div class="container">
-				<h1>Image Credits</h1>
-			</div>
-		</section>
+
+		<?php
+		$heading = 'Image Credits';
+		include('partials/page-heading.php');
+		?>
+
 		<section class="page-content">
 			<div class="container">
 				<div class="row cards-row">

@@ -23,7 +23,8 @@ strong {
   max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  padding: 0 1rem; }
 
 .row {
   display: flex;
@@ -41,12 +42,12 @@ strong {
   text-decoration: none;
   transition: background 0.3s ease; }
 
-main {
-  padding: 1rem; }
-
 header {
   background: var(--primary-color);
-  color: white; }
+  color: white;
+  box-shadow: 0 0 0.5rem var(--dark-color);
+  position: relative;
+  z-index: 10; }
 
 header .row {
   justify-content: space-between;
@@ -131,6 +132,13 @@ footer nav .menu li a:focus {
       font-size: 0.875rem; }
   .card:hover img, .card:focus img {
     transform: scale(1.2); }
+
+.page-heading {
+  padding: 2rem 0;
+  background: var(--secondary-color); }
+  .page-heading h1 {
+    color: white;
+    font-size: 2rem; }
 
 .banner {
   background-image: url("../images/tacyra-autrey-jYQd0TbO__0-unsplash.jpg");

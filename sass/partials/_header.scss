@@ -1,6 +1,9 @@
 header {
 	background: var(--primary-color);
 	color: white;
+	box-shadow: 0 0 0.5rem var(--dark-color);
+	position: relative;
+	z-index: 10;
 }
 
 header .row {
