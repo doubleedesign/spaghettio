@@ -16,7 +16,7 @@
 		text-align: center;
 		padding: 1rem 0;
 
-		@include screen-above(lg) {
+		@include screen-above(md) {
 			width: auto;
 			flex-basis: auto;
 			padding: 0;
@@ -31,23 +31,45 @@
 	}
 
 	nav {
-		display: flex;
-		align-items: center;
+		width: 100%;
+
+		@include screen-above(md) {
+			width: auto;
+			display: flex;
+			align-items: center;
+		}
+
+		form, ul {
+			width: 100%;
+			flex-basis: 100%;
+			display: flex;
+			justify-content: center;
+
+			@include screen-above(md) {
+				width: auto;
+				flex-basis: auto;
+				justify-content: flex-end;
+			}
+		}
 
 		form {
 			display: flex;
 			flex-wrap: nowrap;
+			justify-content: space-between;
 			background: rgba(black, 0.1);
 			border: 1px solid rgba(white, 0.5);
 
 			input[type=search] {
-				max-width: 200px;
 				background: transparent;
 				border: 0;
 				padding: 0.5rem;
 				border-radius: 0;
 				color: white;
 				font-family: var(--body-font);
+
+				@include screen-above(md) {
+					max-width: 200px;
+				}
 
 				&:focus {
 					outline: none;
@@ -87,7 +109,10 @@
 		}
 
 		ul {
-			padding-left: 3rem;
+
+			@include screen-above(md) {
+				padding-left: 3rem;
+			}
 
 			li {
 

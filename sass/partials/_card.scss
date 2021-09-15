@@ -1,11 +1,23 @@
 .card {
 	padding: 1rem 1rem;
-	width: 33.33%;
-	flex-basis: 33.33%;
-	max-width: 33.33%;
+	width: 100%;
+	flex-basis: 100%;
+	max-width: 100%;
 	color: var(--dark-color);
 	text-decoration: none;
 	box-sizing: border-box;
+
+	@include screen-above(sm) {
+		width: 50%;
+		flex-basis: 50%;
+		max-width: 50%;
+	}
+
+	@include screen-above(lg) {
+		width: 33.33%;
+		flex-basis: 33.33%;
+		max-width: 33.33%;
+	}
 
 	.card-inner {
 		box-shadow: 0 0 5px rgba(0,0,0,0.2);
