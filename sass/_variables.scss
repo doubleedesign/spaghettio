@@ -11,3 +11,47 @@
 
 // SASS variables - will only work if compile as SASS
 $global-transition: all 0.3s ease;
+
+$breakpoints: (
+	'xs': 320px,
+	'sm': 640px,
+	'md': 768px,
+	'lg': 1024px,
+	'xl': 1280px,
+	'xxl': 1600px
+);
+
+
+@mixin screen-above($breakpoint) {
+	@if not map-has-key($map: $breakpoints, $key: $breakpoint) {
+		@error 'The given breakpoint #{$breakpoint} for @screen-above does not exist.';
+	}
+
+	@media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+		@content;
+	}
+}
+
+@mixin screen-between($lower, $higher) {
+	@if not map-has-key($map: $breakpoints, $key: $lower) {
+		@error 'The given breakpoint #{$lower} ($lower) for @screen-between does not exist.';
+	}
+
+	@if not map-has-key($map: $breakpoints, $key: $higher) {
+		@error 'The given breakpoint #{$higher} ($higher) for @screen-between does not exist.';
+	}
+
+	@media screen and (min-width: map-get($breakpoints, $lower)) and (max-width: map-get($breakpoints, $higher) - 1) {
+		@content;
+	}
+}
+
+@mixin screen-below($breakpoint) {
+	@if not map-has-key($map: $breakpoints, $key: $breakpoint) {
+		@error 'The given breakpoint #{$breakpoint} for @screen-below does not exist.';
+	}
+
+	@media screen and (max-width: map-get($breakpoints, $breakpoint) - 1) {
+		@content;
+	}
+}
