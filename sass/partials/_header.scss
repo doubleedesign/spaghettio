@@ -16,6 +16,58 @@
 		font-size: 1.25rem;
 	}
 
+	form {
+		display: flex;
+		flex-wrap: nowrap;
+		background: rgba(black, 0.1);
+		border: 1px solid rgba(white, 0.5);
+
+		input[type=search] {
+			max-width: 200px;
+			background: transparent;
+			border: 0;
+			padding: 0.5rem;
+			border-radius: 0;
+			color: white;
+			font-family: var(--body-font);
+
+			&:focus {
+				outline: none;
+				box-shadow: none;
+			}
+		}
+
+		button {
+			background: transparent;
+			color: rgba(white, 0.75);
+			border: 0;
+			border-radius: 0;
+			appearance: none;
+			padding: 0.5rem;
+			cursor: pointer;
+
+			i {
+				transition: $global-transition;
+				font-size: 1.25rem;
+			}
+
+			&:hover, &:focus {
+
+				i {
+					transform: scale(1.2);
+				}
+			}
+		}
+
+		&:focus-within {
+			box-shadow: 0 0 0.25rem white;
+
+			button {
+				color: white;
+			}
+		}
+	}
+
 	nav {
 		display: flex;
 		align-items: center;

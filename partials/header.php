@@ -6,9 +6,12 @@
 			</div>
 			<nav>
 				<form class="search-form">
-					<label for="search-field">Search</label>
-					<input id="search-field" type="search" name="search-term"/>
-					<button type="submit">Search</button>
+					<label for="search-field" class="screen-reader-text">Search</label>
+					<input id="search-field" type="search" name="search-term" placeholder="Search our site"/>
+					<button type="submit">
+						<i class="fas fa-search"></i>
+						<span class="screen-reader-text">Submit search</span>
+					</button>
 				</form>
 				<ul class="menu">
 					<li><a href="index.php">Home</a></li>

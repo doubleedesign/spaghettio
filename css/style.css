@@ -19,6 +19,18 @@ h1, h2, h3 {
 strong {
   font-weight: 600; }
 
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important; }
+
 .container {
   max-width: 1000px;
   margin-left: auto;
@@ -55,6 +67,38 @@ strong {
     font-family: var(--heading-font);
     font-weight: 400;
     font-size: 1.25rem; }
+  .site-header form {
+    display: flex;
+    flex-wrap: nowrap;
+    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.5); }
+    .site-header form input[type=search] {
+      background: transparent;
+      border: 0;
+      padding: 0.5rem;
+      border-radius: 0;
+      color: white;
+      font-family: var(--body-font); }
+      .site-header form input[type=search]:focus {
+        outline: none;
+        box-shadow: none; }
+    .site-header form button {
+      background: transparent;
+      color: rgba(255, 255, 255, 0.75);
+      border: 0;
+      border-radius: 0;
+      appearance: none;
+      padding: 0.5rem;
+      cursor: pointer; }
+      .site-header form button i {
+        transition: all 0.3s ease;
+        font-size: 1.25rem; }
+      .site-header form button:hover i, .site-header form button:focus i {
+        transform: scale(1.2); }
+    .site-header form:focus-within {
+      box-shadow: 0 0 0.25rem white; }
+      .site-header form:focus-within button {
+        color: white; }
   .site-header nav {
     display: flex;
     align-items: center; }
