@@ -74,9 +74,9 @@ class dbController {
 	/**
 	 * Method to get all restaurants from the database
 	 *
-	 * @return mixed
+	 * @return array
 	 */
-	public function getAll() {
+	public function getAll(): array {
 		$query = 'SELECT * from restaurant_details';
 		$raw_results = $this->conn->query($query);
 		$formatted_results = [];
@@ -109,9 +109,12 @@ class dbController {
 
 	/**
 	 * Method to get search results from the database
+	 * using prepared statements
 	 * @param $keyword
+	 *
+	 * @return array
 	 */
-	public function search($keyword) {
+	public function search($keyword): array {
 		$searchForLike = "%$keyword%";
 		$query = "SELECT * FROM restaurant_details WHERE concat(name, description, address) LIKE ?";
 		$stmt = $this->conn->prepare($query);
@@ -125,9 +128,7 @@ class dbController {
 
 		$result = $stmt->get_result();
 
-		$result_set = $result->fetch_all(MYSQLI_ASSOC);
-
-		return $result_set;
+		return $result->fetch_all(MYSQLI_ASSOC);
 	}
 
 	/**
