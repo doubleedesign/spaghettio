@@ -3,7 +3,7 @@ require_once('database/config.php');
 require_once('database/dbController.php');
 $db = new dbController();
 $db->dbConnect(HOST, USER, PASS, DB);
-$restaurants = $db->getAll('SELECT * from restaurant_details');
+$restaurants = $db->getAll();
 ?>
 
 <!DOCTYPE html>

@@ -73,11 +73,11 @@ class dbController {
 
 	/**
 	 * Method to get all restaurants from the database
-	 * @param $query
 	 *
 	 * @return mixed
 	 */
-	public function getAll($query) {
+	public function getAll() {
+		$query = 'SELECT * from restaurant_details';
 		$raw_results = $this->conn->query($query);
 		$formatted_results = [];
 
