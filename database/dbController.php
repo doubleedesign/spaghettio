@@ -109,10 +109,25 @@ class dbController {
 
 	/**
 	 * Method to get search results from the database
-	 * @param $query
+	 * @param $keyword
 	 */
-	public function search($query) {
+	public function search($keyword) {
+		$searchForLike = "%$keyword%";
+		$query = "SELECT * FROM restaurant_details WHERE concat(name, description, address) LIKE ?";
+		$stmt = $this->conn->prepare($query);
 
+		if(!$stmt) {
+			exit("Prepare failed: " . $this->conn->error);
+		}
+
+		$stmt->bind_param("s", $searchForLike);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+
+		$result_set = $result->fetch_all(MYSQLI_ASSOC);
+
+		return $result_set;
 	}
 
 	/**
