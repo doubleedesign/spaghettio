@@ -132,6 +132,11 @@
 					&:focus {
 						background: rgba(255,255,255,0.2);
 					}
+
+					&.current-page {
+						text-decoration: underline;
+						background: rgba(255,255,255,0.2);
+					}
 				}
 			}
 		}

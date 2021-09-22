@@ -241,6 +241,9 @@ strong {
       padding: 1rem 0.5rem; }
       .site-header nav ul li a:hover, .site-header nav ul li a:focus {
         background: rgba(255, 255, 255, 0.2); }
+      .site-header nav ul li a.current-page {
+        text-decoration: underline;
+        background: rgba(255, 255, 255, 0.2); }
 
 .site-footer {
   background: var(--secondary-color);
