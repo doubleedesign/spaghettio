@@ -2,12 +2,15 @@
 if(!isset($url)) {
 	$url = "";
 }
-if(!isset($linkTarget)) {
-	$linkTarget = "";
+if(isset($linkTarget)) {
+	$linkTargetHTML = 'target="'.$linkTarget.'"';
+}
+else {
+	$linkTargetHTML = "";
 }
 ?>
 
-<a class="card" href="<?php echo $url; ?>" target="<?php echo $linkTarget; ?>">
+<a class="card" href="<?php echo $url; ?>" <?php echo $linkTargetHTML; ?>>
 	<div class="card-inner">
 		<div class="card-top">
 			<?php if(isset($imagePath)) { ?>
