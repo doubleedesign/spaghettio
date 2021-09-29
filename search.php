@@ -32,20 +32,27 @@ $results = $db->search($searchTerm);
 
 <main class="home-cards">
 	<div class="container">
-		<div class="row cards-row">
-			<?php
-				foreach($results as $restaurant) {
+		<?php if($results) { ?>
+			<div class="row cards-row">
+				<?php
+				foreach ( $results as $restaurant ) {
 					$id = $restaurant['ID'];
 					$url = "detail.php?id=$id";
 					$name = $restaurant['name'];
 					$description = $restaurant['description'];
 					$imagePath = $restaurant['imagePath'];
 
-					if(!empty($name)) {
-						include( 'partials/card.php' );
+					if (!empty($name)) {
+						include('partials/card.php');
 					}
 				} ?>
-		</div>
+			</div>
+		<?php
+		} else { ?>
+			<div class="alert alert-error">
+				<p>No results found.</p>
+			</div>
+		<?php } ?>
 	</div>
 </main>
 
