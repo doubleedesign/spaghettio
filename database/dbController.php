@@ -72,6 +72,44 @@ class dbController {
 	}
 
 	/**
+	 * Method to delete a restaurant from the database using its ID
+	 *
+	 * @param $id
+	 *
+	 * @return bool
+	 */
+	function delete($id): bool {
+		$sql = 'DELETE FROM restaurant_details WHERE ID=?';
+
+		// Get the image URL and delete the image
+		$restaurant = $this->getRestaurantById($id);
+		$imageURL = $restaurant['imagePath'];
+		$imageDeleted = unlink($imageURL);
+
+		// Check whether it worked and log an error if not
+		if(!$imageDeleted) {
+			$this->logError("Problem deleting the image");
+		}
+
+		// Delete the database row
+		$stmt = $this->conn->prepare($sql);
+		if(!$stmt) {
+			$this->logError("Prepare failed in delete method");
+			exit("Prepare failed");
+		}
+		$stmt->bind_param('i', $id);
+		$stmt->execute();
+
+		// Return whether a row was deleted
+		if($stmt->affected_rows) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	/**
 	 * Method to get all restaurants from the database
 	 *
 	 * @return array

@@ -1,0 +1,38 @@
+.button-wrap {
+	margin: 1rem 0;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+
+.btn {
+	display: inline-block;
+	padding: 0.5rem 1rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: $global-transition;
+
+	&-small {
+		padding: 0.25rem 0.5em;
+		font-size: 0.8rem;
+		font-weight: 300;
+	}
+
+	&-primary {
+		background: var(--primary-color);
+		color: white;
+
+		&:hover, &:focus, &:active {
+			background: var(--dark-color);
+		}
+	}
+
+	&-secondary {
+		background: var(--secondary-color);
+		color: white;
+
+		&:hover, &:focus, &:active {
+			background: var(--dark-color);
+		}
+	}
+}
