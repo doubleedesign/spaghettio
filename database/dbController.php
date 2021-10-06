@@ -72,6 +72,19 @@ class dbController {
 	}
 
 	/**
+	 * Method to run a provided query to update data in the database
+	 * @param $query
+	 * @param $name
+	 * @param $address
+	 * @param $description
+	 * @param $imagePath
+	 * @param $imageCreator
+	 * @param $imageSourceURL
+	 */
+	public function update($query, $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL) {
+	}
+
+	/**
 	 * Method to delete a restaurant from the database using its ID
 	 *
 	 * @param $id

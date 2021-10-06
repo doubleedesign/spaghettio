@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Spaghettio Site Admin</title>
+	<title>Update restaurant</title>
 	<?php include('partials/head.php'); ?>
 </head>
 <body>
@@ -9,7 +9,7 @@
 	<?php include('partials/header.php'); ?>
 
 	<?php
-	$heading = 'Site admin';
+	$heading = 'Update a restaurant';
 	include('partials/page-heading.php');
 	?>
 
