@@ -24,7 +24,7 @@ $restaurant = $db->getRestaurantById($id);
 
 	<main>
 		<section class="page-content">
-			<div class="container">
+			<div class="container container-content">
 
 				<?php
 				if(isset($_GET['confirm']) && $_GET['confirm']) {

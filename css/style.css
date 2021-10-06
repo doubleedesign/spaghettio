@@ -20,6 +20,10 @@ h1, h2, h3 {
     font-weight: 400;
 }
 
+h2 {
+    font-size: 1.25rem;
+}
+
 strong {
     font-weight: 600;
 }
@@ -45,6 +49,10 @@ strong {
     padding: 0 1rem;
 }
 
+.container-content {
+    padding: 1rem;
+}
+
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -65,6 +73,48 @@ strong {
     color: white;
     text-decoration: none;
     transition: background 0.3s ease;
+}
+
+.button-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-small {
+    padding: 0.25rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 300;
+}
+
+.btn-primary {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background: var(--dark-color);
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
+    background: var(--dark-color);
+}
+
+.btn + .btn {
+    margin-left: 1rem;
 }
 
 .page-form {
@@ -194,6 +244,58 @@ strong {
 
 .alert-error a {
     color: var(--primary-color);
+}
+
+table {
+    border: 1px solid var(--dark-color);
+    margin: 1rem 0;
+    width: 100%;
+}
+
+table th, table td {
+    padding: 0.25rem;
+}
+
+table thead tr th {
+    background: var(--dark-color);
+    color: white;
+}
+
+table tbody tr:nth-of-type(even) {
+    background: var(--light-color);
+}
+
+table tbody tr td {
+    vertical-align: middle;
+}
+
+table tbody tr td.image {
+    width: 80px;
+}
+
+table tbody tr td.image .image-wrap {
+    width: 80px;
+    height: 80px;
+}
+
+table tbody tr td.image .image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
+}
+
+table tbody tr td.copy {
+    padding: 0.25rem 0.5rem;
+}
+
+table tbody tr td.copy p strong {
+    display: block;
+}
+
+table tbody tr td.action {
+    width: 60px;
+    text-align: center;
 }
 
 .site-header {

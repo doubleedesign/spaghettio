@@ -23,7 +23,7 @@ $restaurants = $db->getAll();
 
 	<main>
 		<section class="page-content">
-			<div class="container">
+			<div class="container container-content">
 				<div class="button-wrap">
 					<a href="insert.php" class="btn btn-secondary">Insert new restaurant</a>
 				</div>
