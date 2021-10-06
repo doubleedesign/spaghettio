@@ -31,7 +31,7 @@ $restaurants = $db->getAll();
 					<thead>
 						<tr>
 							<th colspan="2">Restaurant</th>
-							<th colspan="2">Actions</th>
+							<th colspan="3">Actions</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,16 +39,17 @@ $restaurants = $db->getAll();
 						foreach($restaurants as $restaurant) { ?>
 							<tr>
 								<td class="image">
-									<div class="image-wrap">
+									<a class="image-wrap" href="detail.php?id=<?php echo $restaurant['ID']; ?>">
 										<img src="<?php echo $restaurant['imagePath']; ?>" alt="<?php echo $restaurant['name'];?>"/>
-									</div>
+									</a>
 								</td>
 								<td class="copy">
 									<p>
-										<strong><?php echo $restaurant['name']; ?></strong>
+										<a href="detail.php?id=<?php echo $restaurant['ID']; ?>"><?php echo $restaurant['name']; ?></a>
 										<?php echo $restaurant['address']; ?>
 									</p>
 								</td>
+								<td class="action"><a href="detail.php?id=<?php echo $restaurant['ID']; ?>" class="btn btn-small btn-secondary">View</a></td>
 								<td class="action"><a href="update.php?id=<?php echo $restaurant['ID']; ?>" class="btn btn-small btn-secondary">Edit</a></td>
 								<td class="action"><a href="delete.php?id=<?php echo $restaurant['ID']; ?>" class="btn btn-small btn-primary">Delete</a></td>
 							</tr>

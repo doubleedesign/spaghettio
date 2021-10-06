@@ -274,8 +274,10 @@ table tbody tr td.image {
 }
 
 table tbody tr td.image .image-wrap {
+    display: block;
     width: 80px;
     height: 80px;
+    overflow: hidden;
 }
 
 table tbody tr td.image .image-wrap img {
@@ -283,14 +285,27 @@ table tbody tr td.image .image-wrap img {
     height: 100%;
     object-fit: cover;
     object-position: center center;
+    transition: all 0.3s ease;
+}
+
+table tbody tr td.image .image-wrap:hover img, table tbody tr td.image .image-wrap:focus img {
+    transform: scale(1.2);
 }
 
 table tbody tr td.copy {
     padding: 0.25rem 0.5rem;
 }
 
-table tbody tr td.copy p strong {
+table tbody tr td.copy p a {
     display: block;
+    font-weight: 600;
+    text-decoration-color: transparent;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+table tbody tr td.copy p a:hover, table tbody tr td.copy p a:focus, table tbody tr td.copy p a:active {
+    text-decoration-color: currentColor;
 }
 
 table tbody tr td.action {
