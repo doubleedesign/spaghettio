@@ -34,6 +34,7 @@ $restaurants = $db->getAll();
 					$name = $restaurant['name'];
 					$description = $restaurant['description'];
 					$imagePath = $restaurant['imagePath'];
+					$linkTarget = '_blank';
 
 					if(!empty($name)) {
 						include( 'partials/card.php' );
