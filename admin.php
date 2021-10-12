@@ -50,7 +50,7 @@ $restaurants = $db->getAll();
 									</p>
 								</td>
 								<td class="action"><a href="detail.php?id=<?php echo $restaurant['ID']; ?>" class="btn btn-small btn-secondary">View</a></td>
-								<td class="action"><a href="update.php?id=<?php echo $restaurant['ID']; ?>" class="btn btn-small btn-secondary">Edit</a></td>
+								<td class="action"><a href="insert.php?id=<?php echo $restaurant['ID']; ?>" class="btn btn-small btn-secondary">Edit</a></td>
 								<td class="action"><a href="delete.php?id=<?php echo $restaurant['ID']; ?>" class="btn btn-small btn-primary">Delete</a></td>
 							</tr>
 						<?php } ?>

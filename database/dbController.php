@@ -73,15 +73,49 @@ class dbController {
 
 	/**
 	 * Method to run a provided query to update data in the database
-	 * @param $query
-	 * @param $name
-	 * @param $address
-	 * @param $description
-	 * @param $imagePath
-	 * @param $imageCreator
-	 * @param $imageSourceURL
+	 *
+	 * @param $id
+	 * @param $post
+	 *
+	 * @return bool|int
 	 */
-	public function update($query, $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL) {
+	public function update($id, $post) {
+		$changes = 0;
+
+		if($this->conn->error) {
+			$this->logError($this->conn->error);
+			return false;
+		}
+
+		// Remove the ID from the passed-in array because we don't want to change that
+		// and doing so may break things because it's a different data type
+		unset($post['ID']);
+
+		// Loop through each field and value sent through, and run an update for each one
+		foreach($post as $fieldname => $value) {
+			$query = "UPDATE `restaurant_details` SET `$fieldname`=? WHERE ID=?";
+			$this->logError($query);
+			$statement = $this->conn->prepare($query);
+
+			if(!$statement) {
+				$this->logError("Prepare failed");
+				return false; // only want to return if there's an error, otherwise it will exit after the first field
+			}
+
+			$statement->bind_param("si", $value, $id);
+			$statement->execute();
+
+			if($statement->affected_rows) {
+				$changes++;
+			}
+		}
+
+		if($changes > 0) {
+			return $id;
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
@@ -141,11 +175,12 @@ class dbController {
 
 	/**
 	 * Method to get a single restaurant from the database by its ID
+	 *
 	 * @param $id
 	 *
-	 * @return array
+	 * @return array|false
 	 */
-	public function getRestaurantById($id): array {
+	public function getRestaurantById($id) {
 		$raw_results = $this->conn->query("SELECT * FROM restaurant_details WHERE ID='$id'");
 		$formatted_results = [];
 
@@ -155,7 +190,12 @@ class dbController {
 
 		// Because we're searching by ID, we expect an array of only one item
 		// So let's return just the first (only) one
-		return $formatted_results[0];
+		if(isset($formatted_results[0])) {
+			return $formatted_results[0];
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
