@@ -77,20 +77,18 @@ $db->dbConnect(HOST, USER, PASS, DB);
 			}
 			// Otherwise, create new record
 			else {
-				// Build SQL query
-				$query = "INSERT INTO `restaurant_details` (`name`, `address`, `description`, `imagePath`, `imageCreator`, `imageSourceURL`) VALUES (?,?,?,?,?,?);";
 
 				// Call the insertQuery method from our db connection object
 				// and assign the value returned by it (in our case, true or false) to a variable so we can do stuff with it here
 				// (Otherwise, it will succeed silently whereas we want to show a message)
-				$inserted_id = $db->insert($query, $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL);
+				$inserted = $db->insert($name, $address, $description, $imagePath, $imageCreator, $imageSourceURL);
 
-				// If $inserted returned a value
-				if(isset($inserted_id['ID'])) {
+				// If $inserted returned a value (we're expecting an array, or false if it wasn't inserted)
+				if(is_array($inserted) && isset($inserted['ID'])) {
 					?>
 					<div class="alert alert-success">
 						<p>Record inserted successfully.</p>
-						<a href="detail.php?id=<?php echo $inserted_id['ID']; ?>">View restaurant</a>
+						<a href="detail.php?id=<?php echo $inserted['ID']; ?>">View restaurant</a>
 					</div>
 					<?php
 				}

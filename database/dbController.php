@@ -28,7 +28,6 @@ class dbController {
 
 	/**
 	 * Method to run a provided query to save data to the current database
-	 * @param $query
 	 * @param $name
 	 * @param $address
 	 * @param $description
@@ -38,7 +37,8 @@ class dbController {
 	 *
 	 * @return int|bool - Did we successfully insert the record into the database? If so, return the ID.
 	 */
-	public function insert($query, $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL) {
+	public function insert($name, $address, $description, $imagePath, $imageCreator, $imageSourceURL) {
+		$query = "INSERT INTO `restaurant_details` (`name`, `address`, `description`, `imagePath`, `imageCreator`, `imageSourceURL`) VALUES (?,?,?,?,?,?);";
 
 		if($this->conn->error) {
 			$this->logError($this->conn->error);
@@ -55,8 +55,9 @@ class dbController {
 		$statement->bind_param("ssssss", $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL);
 		$statement->execute();
 
+		$this->logError(print_r($statement));
+
 		if($statement->affected_rows) {
-			// TODO: Use this code as the basis for the search method and then use the search method here
 			$raw_results = $this->conn->query("SELECT ID FROM restaurant_details WHERE name='$name'");
 			$formatted_results = [];
 
