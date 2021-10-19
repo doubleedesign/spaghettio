@@ -198,6 +198,39 @@ strong {
     z-index: 5;
 }
 
+.page-form fieldset .form-row.valid:after, .page-form fieldset .form-row.invalid:after {
+    font-family: "Font Awesome 5 Free";
+    font-size: 1.5em;
+    font-weight: bold;
+    position: absolute;
+    top: 2rem;
+    right: 0.5rem;
+    background: white;
+    z-index: 10;
+}
+
+.page-form fieldset .form-row.valid input, .page-form fieldset .form-row.valid textarea {
+    border-color: var(--secondary-color);
+}
+
+.page-form fieldset .form-row.valid:after {
+    color: var(--secondary-color);
+    content: '\f058';
+}
+
+.page-form fieldset .form-row.invalid label {
+    color: var(--primary-color);
+}
+
+.page-form fieldset .form-row.invalid input, .page-form fieldset .form-row.invalid textarea {
+    border-color: var(--primary-color);
+}
+
+.page-form fieldset .form-row.invalid:after {
+    color: var(--primary-color);
+    content: '\f057';
+}
+
 .page-form .button-wrap {
     width: 100%;
     display: flex;

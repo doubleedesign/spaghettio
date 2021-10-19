@@ -78,6 +78,49 @@
 					z-index: 5;
 				}
 			}
+
+			&.valid,
+			&.invalid {
+
+				&:after {
+					font-family: "Font Awesome 5 Free";
+					font-size: 1.5em;
+					font-weight: bold;
+					position: absolute;
+					top: 2rem;
+					right: 0.5rem;
+					background: white;
+					z-index: 10;
+				}
+			}
+
+			&.valid {
+
+				input, textarea {
+					border-color: var(--secondary-color);
+				}
+
+				&:after {
+					color: var(--secondary-color);
+					content: '\f058';
+				}
+			}
+
+			&.invalid {
+
+				label {
+					color: var(--primary-color);
+				}
+
+				input, textarea {
+					border-color: var(--primary-color);
+				}
+
+				&:after {
+					color: var(--primary-color);
+					content: '\f057';
+				}
+			}
 		}
 	}
 

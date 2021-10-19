@@ -35,7 +35,11 @@ else {
 
 		<section class="page-content">
 			<div class="container">
-				<form class="page-form" method="post" action="process.php" enctype="multipart/form-data">
+				<form id="insert-form" class="page-form" method="post" action="process.php" enctype="multipart/form-data">
+
+					<div class="form-row">
+						<div class="message-box alert"></div>
+					</div>
 
 					<?php
 					if(isset($restaurant['ID'])) { ?>
