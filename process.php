@@ -31,16 +31,21 @@ $db->dbConnect(HOST, USER, PASS, DB);
 			}
 
 			// Assigning to variables for shorthand
-			$id = $_POST['ID'];
+			if(isset($_POST['ID'])) {
+				$id = $_POST['ID'];
+			}
 			$name = $_POST['name'];
 			$address = $_POST['address'];
 			$description = $_POST['description'];
-			if(isset($to)) {
+			if(isset($to)) { // a new image was uploaded
 				$imagePath = $to;
 			}
-			else {
+			else if(isset($id)) { // a new image was not uploaded and this is an existing restaurant being updated
 				$restaurant = $db->getRestaurantById($id);
 				$imagePath = $restaurant['imagePath'];
+			}
+			else {
+				$imagePath = null;
 			}
 			$imageCreator = $_POST['imageCreator'];
 			$imageSourceURL = $_POST['imageSourceURL'];
@@ -83,23 +88,29 @@ $db->dbConnect(HOST, USER, PASS, DB);
 				// (Otherwise, it will succeed silently whereas we want to show a message)
 				$inserted = $db->insert($name, $address, $description, $imagePath, $imageCreator, $imageSourceURL);
 
-				// If $inserted returned a value (we're expecting an array, or false if it wasn't inserted)
-				if(is_array($inserted) && isset($inserted['ID'])) {
-					?>
+				// If the insertion was successful, it will return our custom array of the record from dbController->insert
+				if(is_array($inserted) && isset($inserted['ID'])) { ?>
 					<div class="alert alert-success">
 						<p>Record inserted successfully.</p>
 						<a href="detail.php?id=<?php echo $inserted['ID']; ?>">View restaurant</a>
 					</div>
-					<?php
-				}
-				// Otherwise, if it returned false
-				else { ?>
+				<?php
+				// If it wasn't and it returns the $statement object, we access that slightly differently to an array, using -> not []
+				} else if(is_object($inserted) && isset($inserted->error_list)) { ?>
 					<div class="alert alert-error">
-						<p>Problem inserting the record.</p>
+						<div>
+							<p>Problem inserting the record:</p>
+							<ul>
+								<?php foreach($inserted->error_list as $error) { ?>
+									<li><?php echo $error['error']; ?></li>
+								<?php } ?>
+							</ul>
+						</div>
 						<a href="insert.php">Try again</a>
 					</div>
-				<?php }
-			} ?>
+				<?php } ?>
+
+			<?php } ?>
 		</div>
 	</section>
 

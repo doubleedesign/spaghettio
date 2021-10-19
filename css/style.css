@@ -228,6 +228,12 @@ strong {
     align-items: center;
 }
 
+.alert ul {
+    margin-top: 0.5rem;
+    list-style: square outside;
+    margin-left: 1rem;
+}
+
 .alert a {
     background: white;
     padding: 0.5rem 1rem;

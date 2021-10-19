@@ -5,6 +5,12 @@
 	justify-content: space-between;
 	align-items: center;
 
+	ul {
+		margin-top: 0.5rem;
+		list-style: square outside;
+		margin-left: 1rem;
+	}
+
 	a {
 		background: white;
 		padding: 0.5rem 1rem;

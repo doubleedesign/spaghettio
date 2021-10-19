@@ -35,7 +35,8 @@ class dbController {
 	 * @param $imageCreator
 	 * @param $imageSourceURL
 	 *
-	 * @return int|bool - Did we successfully insert the record into the database? If so, return the ID.
+	 * @return array|false - Array of either the successful record, or the MySQL statement object which includes the MySQL errors;
+	 *                       false if there was an error prior to the query execution
 	 */
 	public function insert($name, $address, $description, $imagePath, $imageCreator, $imageSourceURL) {
 		$query = "INSERT INTO `restaurant_details` (`name`, `address`, `description`, `imagePath`, `imageCreator`, `imageSourceURL`) VALUES (?,?,?,?,?,?);";
@@ -55,9 +56,7 @@ class dbController {
 		$statement->bind_param("ssssss", $name, $address, $description, $imagePath, $imageCreator, $imageSourceURL);
 		$statement->execute();
 
-		$this->logError(print_r($statement));
-
-		if($statement->affected_rows) {
+		if($statement->affected_rows > 0) {
 			$raw_results = $this->conn->query("SELECT ID FROM restaurant_details WHERE name='$name'");
 			$formatted_results = [];
 
@@ -68,7 +67,7 @@ class dbController {
 			return $formatted_results[0];
 		}
 		else {
-			return false;
+			return $statement;
 		}
 	}
 
@@ -132,11 +131,13 @@ class dbController {
 		// Get the image URL and delete the image
 		$restaurant = $this->getRestaurantById($id);
 		$imageURL = $restaurant['imagePath'];
-		$imageDeleted = unlink($imageURL);
+		if($imageURL) { // account for the image URL being empty
+			$imageDeleted = unlink($imageURL);
 
-		// Check whether it worked and log an error if not
-		if(!$imageDeleted) {
-			$this->logError("Problem deleting the image");
+			// Check whether it worked and log an error if not
+			if(!$imageDeleted) {
+				$this->logError("Problem deleting the image");
+			}
 		}
 
 		// Delete the database row
