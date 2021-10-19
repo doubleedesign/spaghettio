@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		let errors = 0;
 
 		// Get all the inputs
-		let inputs = myForm.querySelectorAll('input[type=text], input[type=file], textarea');
+		let inputs = myForm.querySelectorAll('input[type=text][required], input[type=file][required], textarea[required]');
 
 		// Loop through text inputs and do the same validation and styling for each of them
 		for(let input of inputs) {

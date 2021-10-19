@@ -50,15 +50,16 @@ else {
 						<legend>Restaurant Details</legend>
 						<div class="form-row">
 							<label for="name">Name</label>
-							<input id="name" name="name" type="text" value="<?php echo $restaurant ? $restaurant['name'] : '';  ?>"/>
+							<input id="name" name="name" type="text" value="<?php echo $restaurant ? $restaurant['name'] : '';  ?>" required/>
 						</div>
 						<div class="form-row">
 							<label for="address">Address</label>
-							<input id="address" name="address" type="text" value="<?php echo $restaurant ? $restaurant['address'] : '';  ?>"/>
+							<input id="address" name="address" type="text" value="<?php echo $restaurant ? $restaurant['address'] : '';  ?>" required/>
 						</div>
 						<div class="form-row">
 							<label for="description">Description</label>
-							<textarea id="description" name="description"><?php echo $restaurant ? $restaurant['address'] : '';  ?></textarea>
+							<textarea id="description" class="required" name="description" required><?php echo $restaurant ? $restaurant['address'] : '';
+							?></textarea>
 						</div>
 						<div class="form-row">
 							<label for="category">Category</label>
@@ -97,19 +98,23 @@ else {
 									<img src="<?php echo $restaurant['imagePath']; ?>" alt="Listing image for <?php echo $restaurant['name']; ?>"/>
 								</div>
 							</div>
+							<div class="form-row">
+								<label for="image">Image</label>
+								<input id="image" name="image" type="file"/>
+							</div>
+						<?php } else { ?>
+							<div class="form-row">
+								<label for="image">Image</label>
+								<input id="image" name="image" type="file" required/>
+							</div>
 						<?php } ?>
 						<div class="form-row">
-							<label for="image">Image</label>
-							<input id="image" name="image" type="file"/>
-						</div>
-						<div class="form-row">
 							<label for="imageCreator">Image creator name</label>
-							<input id="imageCreator" name="imageCreator" type="text" value="<?php echo $restaurant ? $restaurant['imageCreator'] : '';  ?>"/>
+							<input id="imageCreator" name="imageCreator" type="text" value="<?php echo $restaurant ? $restaurant['imageCreator'] : '';  ?>" required/>
 						</div>
 						<div class="form-row">
 							<label for="imageSourceURL">Image source URL</label>
-							<input id="imageSourceURL" name="imageSourceURL" type="text" value="<?php echo $restaurant ? $restaurant['imageSourceURL'] : '';
-							?>"/>
+							<input id="imageSourceURL" name="imageSourceURL" type="text" value="<?php echo $restaurant ? $restaurant['imageSourceURL'] : ''; ?>" required/>
 						</div>
 					</fieldset>
 
