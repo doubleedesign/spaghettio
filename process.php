@@ -62,7 +62,7 @@ $db->dbConnect(HOST, USER, PASS, DB);
 				) */
 				$newData = $_POST;
 				$newData['imagePath'] = $imagePath;
-				$updated = $db->update($id, $newData); // will return ID if successful, false if not
+				$updated = $db->update($id, $newData); // will return data array if successful, false if not
 
 				// If $updated returned true
 				if($updated) {?>
