@@ -170,7 +170,7 @@ strong {
     z-index: 0;
 }
 
-.page-form fieldset .form-row input, .page-form fieldset .form-row textarea {
+.page-form fieldset .form-row input, .page-form fieldset .form-row textarea, .page-form fieldset .form-row select {
     font-family: var(--body-font);
     width: 100%;
     box-sizing: border-box;
@@ -184,10 +184,15 @@ strong {
     z-index: 1;
 }
 
-.page-form fieldset .form-row input:focus, .page-form fieldset .form-row textarea:focus {
+.page-form fieldset .form-row input:focus, .page-form fieldset .form-row textarea:focus, .page-form fieldset .form-row select:focus {
     border-color: var(--primary-color);
     outline: none;
     box-shadow: 0 0 0.25rem var(--primary-color);
+}
+
+.page-form fieldset .form-row select {
+    padding-left: 0.5rem;
+    padding-top: 2rem;
 }
 
 .page-form fieldset .form-row:focus-within label {

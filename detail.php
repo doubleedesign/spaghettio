@@ -29,6 +29,7 @@ $restaurant = $db->getRestaurantById($id);
 				</div>
 				<div class="restaurant-details-address">
 					<i class="fas fa-map-marker-alt"></i>
+					<p><strong><?php echo $restaurant['category']; ?></strong></p>
 					<p><?php echo $restaurant['address']; ?></p>
 				</div>
 			</div>

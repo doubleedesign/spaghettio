@@ -60,6 +60,33 @@ else {
 							<label for="description">Description</label>
 							<textarea id="description" name="description"><?php echo $restaurant ? $restaurant['address'] : '';  ?></textarea>
 						</div>
+						<div class="form-row">
+							<label for="category">Category</label>
+							<select id="category" name="category">
+								<option disabled>Please select a category</option>
+								<?php
+								// Set up our categories as value => label pairs
+								// The value is what gets saved in the database (and is often a category ID which associates it with more info about the
+								// category in a categories table); the label is what the user sees
+								$categories = array(
+									'family-restaurant' => 'Family restaurant',
+									'fine-dining' => 'Fine dining',
+									'casual-dining' => 'Casual dining',
+									'fast-food' => 'Fast food'
+								);
+								// Loop through the categories set above and if the value matches the pre-saved one, preselect that instead of  the first value
+								// by adding the selected attribute when it does match
+								foreach($categories as $value => $label) {
+									if($value == $restaurant['category']) { ?>
+										<option value="<?php echo $value; ?>" selected><?php echo $label; ?></option>
+									<?php
+									} else { ?>
+										<option value="<?php echo $value; ?>"><?php echo $label; ?></option>
+									<?php }
+								}
+								?>
+							</select>
+						</div>
 					</fieldset>
 
 					<fieldset>
