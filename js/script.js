@@ -9,10 +9,6 @@ document.addEventListener('DOMContentLoaded', function(event) {
 	// Using querySelector, we can identify a single element using a selector just like we do in CSS
 	let message = document.querySelector('.form-row .message-box');
 
-	// Identify the <input>s and <textarea>s
-	// Using querySelectorAll, we can identify multiple elements using a selector just like we do in CSS
-	let myInputs = document.querySelectorAll('.form-row input, .form-row textarea');
-
 	// Add an event listener to the form and create a function to run when that event is detected
 	myForm.addEventListener('submit', function(event) {
 		// Stop the default form submission action
@@ -38,10 +34,10 @@ document.addEventListener('DOMContentLoaded', function(event) {
 		let errors = 0;
 
 		// Get all the inputs
-		let textInputs = myForm.querySelectorAll('input[type=text], input[type=file], textarea');
+		let inputs = myForm.querySelectorAll('input[type=text], input[type=file], textarea');
 
 		// Loop through text inputs and do the same validation and styling for each of them
-		for(let input of textInputs) {
+		for(let input of inputs) {
 			if(isNotEmpty(input.value)) {
 				updateStyling(input, true);
 			}
