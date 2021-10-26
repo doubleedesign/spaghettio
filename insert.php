@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('database/config.php');
 require_once('database/dbController.php');
 $db = new dbController();
@@ -9,6 +10,10 @@ if(isset($_GET['id'])) {
 }
 else {
 	$restaurant = false;
+}
+$isLoggedIn = false;
+if(isset($_SESSION['userID'])) {
+	$isLoggedIn = true;
 }
 ?>
 
@@ -21,7 +26,6 @@ else {
 <body>
 
 	<?php include('partials/header.php'); ?>
-
 	<main>
 		<?php
 		if(is_array($restaurant)) {
@@ -35,7 +39,8 @@ else {
 
 		<section class="page-content">
 			<div class="container">
-				<form id="insert-form" class="page-form" method="post" action="process.php" enctype="multipart/form-data">
+				<?php if($isLoggedIn) { ?>
+					<form id="insert-form" class="page-form" method="post" action="process.php" enctype="multipart/form-data">
 
 					<div class="form-row">
 						<div class="message-box alert"></div>
@@ -123,6 +128,12 @@ else {
 					</div>
 
 				</form>
+				<?php } else { ?>
+					<div class="alert alert-error">
+						<p>You must be logged in to perform that action.</p>
+						<a href="admin.php">Log in</a>
+					</div>
+				<?php } ?>
 			</div>
 		</section>
 

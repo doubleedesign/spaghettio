@@ -1,10 +1,15 @@
 <?php
+session_start();
 require_once('database/config.php');
 require_once('database/dbController.php');
 $db = new dbController();
 $db->dbConnect(HOST, USER, PASS, DB);
 $id = $_GET['id'];
 $restaurant = $db->getRestaurantById($id);
+$isLoggedIn = false;
+if(isset($_SESSION['userID'])) {
+	$isLoggedIn = true;
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,10 +26,11 @@ $restaurant = $db->getRestaurantById($id);
 	$heading = 'Delete ' . $restaurant['name'];
 	include('partials/page-heading.php');
 	?>
-
 	<main>
 		<section class="page-content">
 			<div class="container container-content">
+
+				<?php if($isLoggedIn) { ?>
 
 				<?php
 				if(isset($_GET['confirm']) && $_GET['confirm']) {
@@ -44,8 +50,7 @@ $restaurant = $db->getRestaurantById($id);
 						</div>
 					<?php } ?>
 				<?php
-				}
-				else { ?>
+				} else { ?>
 					<h2>Are you sure you want to delete this restaurant?</h2>
 					<?php
 					$id = $restaurant['ID'];
@@ -62,6 +67,13 @@ $restaurant = $db->getRestaurantById($id);
 					<div class="button-wrap">
 						<a href="admin.php" class="btn btn-primary">Cancel</a>
 						<a href="delete.php?id=<?php echo $id; ?>&confirm=true" class="btn btn-secondary">Confirm</a>
+					</div>
+				<?php } ?>
+
+				<?php } else { ?>
+					<div class="alert alert-error">
+						<p>You must be logged in to perform that action.</p>
+						<a href="admin.php">Log in</a>
 					</div>
 				<?php } ?>
 			</div>
