@@ -26,7 +26,9 @@ if(isset($_SESSION['userID'])) {
 	include('partials/page-heading.php');
 	?>
 
-	<?php if(!$loggedIn) { ?>
+	<?php
+	// ! negates the condition: Show the form if isLoggedIn is false, i.e. no-one is logged in
+	if(!$loggedIn) { ?>
 		<form id="insert-form" class="page-form" method="post" action="process-login.php" enctype="multipart/form-data">
 			<fieldset>
 				<legend>Admin login</legend>
@@ -45,7 +47,9 @@ if(isset($_SESSION['userID'])) {
 		</form>
 	<?php } ?>
 
-	<?php if($loggedIn) { ?>
+	<?php
+	// If someone is logged in, show the admin options
+	if($loggedIn) { ?>
 	<main>
 		<section class="page-content">
 			<div class="container container-content">
