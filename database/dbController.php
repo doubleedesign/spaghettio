@@ -26,6 +26,50 @@ class dbController {
 		return $this->conn;
 	}
 
+
+	/**
+	 * Method to log in a user (or return false if the details are wrong)
+	 * @param $email
+	 * @param $password
+	 *
+	 * @return int|false - user ID if successful, false if not
+	 */
+	public function login($email, $password) {
+		$query = "SELECT * FROM `users` WHERE `email` = ? AND `password` = ?";
+		$stmt = $this->conn->prepare($query);
+
+		if(!$stmt) {
+			exit("Prepare failed: " . $this->conn->error);
+		}
+
+		$hashed_password = md5($password);
+		$stmt->bind_param("ss", $email, $hashed_password);
+		$stmt->execute();
+
+		$result = $stmt->get_result();
+		$results = $result->fetch_all(MYSQLI_ASSOC);
+
+		// We are only expecting one result, so return the first one in the array
+		// Note that the user registration process would need to ensure that email addresses can't be used more than once
+		if(is_array($results) && isset($results[0])) {
+			$_SESSION['userID'] = $results[0]['ID'];
+			return $results[0]['ID'];
+		}
+		else {
+			return false; // email/password combo was not found
+		}
+	}
+
+	/**
+	 * Method to log out the active user
+	 * @return bool
+	 */
+	public function logout() {
+		unset($_SESSION);
+		session_destroy();
+		return true;
+	}
+
 	/**
 	 * Method to run a provided query to save data to the current database
 	 * @param $name

@@ -1,9 +1,14 @@
 <?php
+session_start();
 require_once('database/config.php');
 require_once('database/dbController.php');
 $db = new dbController();
 $db->dbConnect(HOST, USER, PASS, DB);
 $restaurants = $db->getAll();
+$loggedIn = false;
+if(isset($_SESSION['userID'])) {
+	$loggedIn = true;
+}
 ?>
 
 <!DOCTYPE html>
@@ -21,11 +26,32 @@ $restaurants = $db->getAll();
 	include('partials/page-heading.php');
 	?>
 
+	<?php if(!$loggedIn) { ?>
+		<form id="insert-form" class="page-form" method="post" action="process-login.php" enctype="multipart/form-data">
+			<fieldset>
+				<legend>Admin login</legend>
+				<div class="form-row">
+					<label for="email">Email address</label>
+					<input id="email" name="email" type="email" required/>
+				</div>
+				<div class="form-row">
+					<label for="password">Password</label>
+					<input id="password" name="password" type="password" required/>
+				</div>
+			</fieldset>
+			<div class="button-wrap">
+				<input type="submit" value="Submit"/>
+			</div>
+		</form>
+	<?php } ?>
+
+	<?php if($loggedIn) { ?>
 	<main>
 		<section class="page-content">
 			<div class="container container-content">
 				<div class="button-wrap">
 					<a href="insert.php" class="btn btn-secondary">Insert new restaurant</a>
+					<a href="process-logout.php" class="btn btn-primary">Log out</a>
 				</div>
 				<table>
 					<thead>
@@ -60,6 +86,7 @@ $restaurants = $db->getAll();
 			</div>
 		</section>
 	</main>
+	<?php } ?>
 
 	<?php include('partials/footer.php'); ?>
 

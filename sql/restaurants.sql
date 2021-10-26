@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Oct 19, 2021 at 05:46 AM
+-- Generation Time: Oct 26, 2021 at 02:07 AM
 -- Server version: 5.7.31
 -- PHP Version: 7.4.9
 
@@ -51,6 +51,28 @@ INSERT INTO `restaurant_details` (`ID`, `name`, `address`, `description`, `categ
 (17, 'The Spaghetti Tree', '59 Bourke St, Melbourne VIC 3000', '59 Bourke St, Melbourne VIC 3000', '', 'uploads/clark-douglas-17ZU9BPy_Q4-unsplash.jpg', 'Bruna Branco', 'https://unsplash.com/photos/t8hTmte4O_g'),
 (21, 'Foglia Di Fico', '585 La Trobe St, Melbourne VIC 3000', '585 La Trobe St, Melbourne VIC 3000', '', 'uploads/karthik-garikapati-oBbTc1VoT-0-unsplash (1).jpg', 'Karthik Garikapati', 'https://unsplash.com/s/photos/pizza?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'),
 (25, 'test', 'test', 'test', '', 'uploads/karthik-garikapati-oBbTc1VoT-0-unsplash.jpg', 'test', 'test');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`ID`, `name`, `email`, `password`) VALUES
+(1, 'Leesa', 'leesa.ward2@rmit.edu.au', '5f4dcc3b5aa765d61d8327deb882cf99');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
